@@ -1,0 +1,6 @@
+{
+  "name": "Electrical Photo Scanner & Sync",
+  "description": "Scans Google Photos for pictures of electrical work, identifies them using Gemini, renames them with descriptive names, and saves them to a Google Photos album and Google Drive.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
