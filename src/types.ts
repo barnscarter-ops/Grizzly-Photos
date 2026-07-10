@@ -1,49 +1,48 @@
-export interface GoogleMediaItem {
-  id: string;
-  description?: string;
-  productUrl: string;
-  baseUrl: string;
-  mimeType: string;
+// Local file representation from Google Photos sync folder
+export interface LocalFile {
+  path: string;
   filename: string;
-  mediaMetadata: {
-    creationTime: string;
-    width: string;
-    height: string;
-    photo?: {
-      cameraMake?: string;
-      cameraModel?: string;
-      focalLength?: number;
-      apertureFNumber?: number;
-      isoEquivalent?: number;
-      exposureTime?: string;
-    };
-  };
+  size: number;
+  created: string;
+  mimeType: string;
 }
 
-export interface ScannedPhoto {
+// Result of Gemini classification
+export interface AnalysisResult {
+  isElectrical: boolean;
+  descriptiveName: string;
+  description: string;
+  electricalType: string;
+  componentsDetected: string[];
+  craftsmanshipRating: string;
+}
+
+// Scanned result for a local file
+export interface ScanResult {
   id: string;
-  filename: string;
-  baseUrl: string;
-  creationTime: string;
-  isAnalyzed: boolean;
-  isElectrical?: boolean;
-  descriptiveName?: string;
-  description?: string;
-  electricalType?: string;
-  componentsDetected?: string[];
-  craftsmanshipRating?: string;
-  savedToDrive?: boolean;
-  savedToAlbum?: boolean;
+  filePath: string;
+  fileName: string;
+  fileSize: number;
+  analysisResult: AnalysisResult;
+  savedToDrive: boolean;
   driveFileId?: string;
   driveLink?: string;
-  error?: string;
+  timestamp: string;
 }
 
+// Scan configuration
+export interface ScanConfig {
+  albumName: string;
+  folderName: string;
+  lastScan: string | null;
+  syncFolderPath: string;
+}
+
+// Scan statistics
 export interface ScanStats {
-  totalAnalyzed: number;
+  totalScanned: number;
   electricalFound: number;
   savedToDriveCount: number;
-  savedToAlbumCount: number;
   totalAvailable: number;
 }
 
