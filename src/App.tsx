@@ -608,7 +608,7 @@ function TabButton({ label, active, onClick, count }: { label: string; active: b
   );
 }
 
-function ResultCard({ result, onClick, currentFile, isScanning }: { result: ScanResult; onClick: () => void; currentFile: string | undefined; isScanning: boolean }) {
+function ResultCard({ result, onClick, currentFile, isScanning }: React.PropsWithChildren<{ result: ScanResult; onClick: () => void; currentFile: string | undefined; isScanning: boolean }>) {
   const isElectrical = result.analysisResult.isElectrical;
   const isCurrent = result.filePath === currentFile;
 
